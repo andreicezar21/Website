@@ -1,0 +1,138 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Single source of truth for all site content.
+// Anything in [square brackets] is a placeholder — replace it with real data.
+// LinkedIn blocks automated reading, so education/experience fields could not
+// be pre-filled; paste your profile text over the placeholders below.
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const site = {
+  name: "Andrei Cezar Dragomir",
+  url: "https://acd-portfolio.vercel.app", // replace when you have a domain
+  description:
+    "Personal site of Andrei Cezar Dragomir, pure mathematics student at the University of Waterloo. Projects, write-ups, and CV.",
+  kicker: "Pure Mathematics · University of Waterloo",
+  tagline: "Pure mathematics student at the University of Waterloo.",
+};
+
+export const about = {
+  paragraphs: [
+    "I'm a pure mathematics student at the University of Waterloo, working through the core of the subject — algebra, analysis, and the structures that connect them. Lately that has meant fields and Galois theory, group representations, and a growing collection of write-ups, some of which live in the Projects section below.",
+    "The visuals on this site borrow their language from algebraic geometry: every figure rendered here is the zero locus of an explicit polynomial, deformed live as you scroll. It's an aesthetic, not a research statement — the actual mathematics lives in the write-ups.",
+  ],
+};
+
+export interface Project {
+  title: string;
+  coauthors: string;
+  venue: string;
+  year: string;
+  abstract: string;
+  pdf: string; // drop the file in public/projects/ and point this at it
+  motif: "node" | "cusp" | "lemniscate" | "trifolium" | "group" | "pi" | "grid";
+}
+
+export const projects: Project[] = [
+  {
+    title: "A Representation-Theoretic Proof of Burnside's Theorem",
+    coauthors: "A. C. Dragomir",
+    venue: "Expository write-up · PMATH 348, University of Waterloo",
+    year: "2026",
+    abstract:
+      "Develops the basic character theory of finite groups — Schur's lemma, orthogonality of characters, and integrality of character values — and uses it to prove Burnside's theorem: every group of order pᵃqᵇ is solvable.",
+    pdf: "/projects/burnside-theorem.pdf",
+    motif: "group",
+  },
+  {
+    title: "On the Transcendence of π",
+    coauthors: "A. C. Dragomir",
+    venue: "Expository write-up",
+    year: "2026",
+    abstract:
+      "A proof of the Lindemann–Weierstrass theorem — exponentials of distinct algebraic numbers are linearly independent over the algebraic numbers — from which the transcendence of π and e falls out as a corollary.",
+    pdf: "/projects/transcendence-of-pi.pdf",
+    motif: "pi",
+  },
+  {
+    title: "A Probabilistic Analysis and Optimization of a Casino Game",
+    coauthors: "A. C. Dragomir",
+    venue: "Course summative · Lisgar Collegiate Institute",
+    year: "2024",
+    abstract:
+      "Designs a 4×4 minesweeper-style casino game, derives the distribution of the losing round and a payout function that holds the house edge in a target band, then validates the model against live data from a real casino night.",
+    pdf: "/projects/A_Probabilistic_Analysis_and_Optimization_of_a_Casino_Game.pdf",
+    motif: "grid",
+  },
+];
+
+export interface CvEntry {
+  title: string;
+  org?: string;
+  period: string;
+  detail?: string;
+}
+
+export const cv: {
+  education: CvEntry[];
+  work: CvEntry[];
+  awards: CvEntry[];
+  teaching: CvEntry[];
+  skills: string[];
+} = {
+  education: [
+    {
+      title: "Bachelor of Mathematics, Pure Mathematics",
+      org: "University of Waterloo",
+      period: "2025 – 2030",
+    },
+  ],
+  work: [
+    {
+      title: "Data Science Intern",
+      org: "AMRIS Aviation",
+      period: "May 2026 – Aug 2026",
+    },
+  ],
+  awards: [
+    {
+      title: "President's Scholarship",
+      org: "University of Waterloo",
+      period: "2025",
+    },
+    {
+      title: "Valedictorian",
+      org: "Lisgar Collegiate Institute",
+      period: "2025",
+    },
+  ],
+  teaching: [
+    {
+      title: "Mathematics & Science Tutor",
+      org: "Lisgar Collegiate Institute",
+      period: "2023 – 2025",
+    },
+  ],
+  skills: [
+    "[Algebraic geometry]",
+    "[Commutative algebra]",
+    "[LaTeX]",
+    "[Python / SageMath]",
+    "[Macaulay2]",
+    "[Languages]",
+  ],
+};
+
+export const cvPdf = {
+  available: false, // set true once you drop cv.pdf into public/
+  href: "/cv.pdf",
+};
+
+export const links: { label: string; href: string }[] = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/andrei-cezar-dragomir" },
+  // Add when ready:
+  // { label: "GitHub", href: "https://github.com/your-handle" },
+  // { label: "arXiv", href: "https://arxiv.org/a/your-id" },
+  // { label: "Scholar", href: "https://scholar.google.com/citations?user=..." },
+];
+
+// Assembled at click-time so the address never sits in the static HTML.
+export const emailParts = ["acdragom", "gmail.com"];
