@@ -16,7 +16,7 @@ export const site = {
 
 export const about = {
   paragraphs: [
-    "I'm a pure mathematics student at the University of Waterloo, working through the core of the subject — algebra, analysis, and the structures that connect them. Lately that has meant fields and Galois theory, group representations, and a growing collection of write-ups, some of which live in the Projects section below.",
+    "I'm a second-year pure mathematics student at the University of Waterloo, working through the core of the subject — algebra, analysis, and the structures that connect them. Lately that's meant fields and Galois theory, commutative algebra, and number theory. Outside of pure math, I've been picking up statistics and machine learning, partly out of interest and partly through internships, with an eye toward quantitative finance.",
     "The visuals on this site borrow their language from algebraic geometry: every figure rendered here is the zero locus of an explicit polynomial, deformed live as you scroll.",
   ],
   // Candid for the About column — edit the caption/tag to taste.
