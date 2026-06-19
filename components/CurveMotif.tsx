@@ -143,6 +143,54 @@ function drawGrid(ctx: CanvasRenderingContext2D, w: number, h: number) {
   }
 }
 
+// Scatter of points with a line of best fit and a lone violet outlier —
+// the regression at the heart of the spousal-homicide study.
+function drawScatter(ctx: CanvasRenderingContext2D, w: number, h: number) {
+  const pad = 16;
+  const xL = pad, xR = w - pad, yB = h - pad, yT = pad;
+  const px = (nx: number) => xL + nx * (xR - xL);
+  const py = (ny: number) => yB - ny * (yB - yT);
+
+  // axes
+  ctx.strokeStyle = ACCENT_FAINT;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(xL, yT); ctx.lineTo(xL, yB); ctx.lineTo(xR, yB);
+  ctx.stroke();
+
+  // line of best fit
+  ctx.strokeStyle = ACCENT;
+  ctx.lineWidth = 1.4;
+  ctx.shadowColor = ACCENT_GLOW;
+  ctx.shadowBlur = 6;
+  ctx.beginPath();
+  ctx.moveTo(px(0.04), py(0.16));
+  ctx.lineTo(px(0.95), py(0.82));
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // data points, loosely tracking the line
+  const pts: Pt[] = [
+    [0.09, 0.2], [0.19, 0.31], [0.28, 0.24], [0.37, 0.46], [0.46, 0.39],
+    [0.55, 0.56], [0.64, 0.5], [0.73, 0.69], [0.82, 0.61], [0.9, 0.81],
+  ];
+  ctx.fillStyle = BLUE;
+  for (const [nx, ny] of pts) {
+    ctx.beginPath();
+    ctx.arc(px(nx), py(ny), 1.9, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // the lone outlier, sitting well above the fit
+  ctx.fillStyle = VIOLET;
+  ctx.shadowColor = VIOLET;
+  ctx.shadowBlur = 7;
+  ctx.beginPath();
+  ctx.arc(px(0.58), py(0.96), 2.4, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.shadowBlur = 0;
+}
+
 export default function CurveMotif({ kind }: { kind: Project["motif"] }) {
   const ref = useRef<HTMLCanvasElement | null>(null);
 
@@ -159,10 +207,11 @@ export default function CurveMotif({ kind }: { kind: Project["motif"] }) {
     canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    if (kind === "group" || kind === "pi" || kind === "grid") {
+    if (kind === "group" || kind === "pi" || kind === "grid" || kind === "scatter") {
       ctx.clearRect(0, 0, w, h);
       if (kind === "group") drawGroup(ctx, w, h);
       else if (kind === "pi") drawPi(ctx, w, h);
+      else if (kind === "scatter") drawScatter(ctx, w, h);
       else drawGrid(ctx, w, h);
       return;
     }

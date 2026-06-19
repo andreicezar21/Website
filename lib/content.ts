@@ -36,7 +36,7 @@ export interface Project {
   abstract: string;
   pdf: string; // drop the file in public/projects/ and point this at it
   thumb: string; // first-page preview (public/projects/thumbs/), links to the pdf
-  motif: "node" | "cusp" | "lemniscate" | "trifolium" | "group" | "pi" | "grid";
+  motif: "node" | "cusp" | "lemniscate" | "trifolium" | "group" | "pi" | "grid" | "scatter";
 }
 
 export const projects: Project[] = [
@@ -83,7 +83,7 @@ export const projects: Project[] = [
       "A statistical study of spousal homicide in Ontario and Quebec from 1997–2023, built on Statistics Canada data. Compares the two provinces through numerical summaries, box plots, histograms, normality tests, and time series, then fits a linear regression between Ontario's divorce and spousal-homicide rates. Finds Ontario's rate higher and steadier than Quebec's, and a moderate positive correlation between divorce and spousal homicide that strengthens once a 2001 outlier is removed.",
     pdf: "/projects/spousal-homicide-ontario-quebec.pdf",
     thumb: "/projects/thumbs/spousal-homicide-ontario-quebec.png",
-    motif: "node",
+    motif: "scatter",
   },
 ];
 
