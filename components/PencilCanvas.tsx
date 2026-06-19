@@ -61,7 +61,7 @@ export default function PencilCanvas() {
     const draw = (t: number) => {
       ctx.clearRect(0, 0, w, h);
 
-      ctx.strokeStyle = "rgba(148, 184, 173, 0.09)";
+      ctx.strokeStyle = "rgba(120, 200, 255, 0.10)";
       ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(px(0), 0); ctx.lineTo(px(0), h); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(0, py(0)); ctx.lineTo(w, py(0)); ctx.stroke();
@@ -71,13 +71,21 @@ export default function PencilCanvas() {
         const b = -1.0 + (2.0 * i) / (N_CURVES - 1) + 0.18 * Math.sin(t * 0.21 + i * 1.7);
         const disc = 4 * a * a * a + 27 * b * b;
         const near = Math.exp(-Math.abs(disc) * 1.3);
-        const r = Math.round(99 + (139 - 99) * near);
-        const g = Math.round(242 + (124 - 242) * near);
-        const bl = Math.round(197 + (246 - 197) * near);
-        ctx.strokeStyle = `rgba(${r}, ${g}, ${bl}, ${0.14 + 0.5 * near})`;
-        ctx.lineWidth = 1 + 0.7 * near;
+        // far curves drift cool (blue-green); the near-singular one flares violet
+        const cool = i / (N_CURVES - 1); // 0 → green, 1 → blue across the pencil
+        const baseR = 93 + (78 - 93) * cool;
+        const baseG = 255 + (168 - 255) * cool;
+        const baseB = 176 + (255 - 176) * cool;
+        const r = Math.round(baseR + (155 - baseR) * near);
+        const g = Math.round(baseG + (140 - baseG) * near);
+        const bl = Math.round(baseB + (255 - baseB) * near);
+        ctx.strokeStyle = `rgba(${r}, ${g}, ${bl}, ${0.16 + 0.55 * near})`;
+        ctx.lineWidth = 1 + 0.9 * near;
+        ctx.shadowColor = `rgba(${r}, ${g}, ${bl}, 0.8)`;
+        ctx.shadowBlur = 10 * near;
         strokeBranches(a, b);
       }
+      ctx.shadowBlur = 0;
     };
 
     if (reduced) {

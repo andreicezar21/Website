@@ -75,21 +75,26 @@ export default function Constellation() {
       const P = project(t);
 
       ctx.lineWidth = 1;
-      for (const [i, j] of EDGES) {
+      for (const [k, [i, j]] of EDGES.entries()) {
         const a = (P[i][2] + P[j][2]) / 2;
-        ctx.strokeStyle = `rgba(99, 242, 197, ${0.05 + 0.09 * a})`;
+        // alternate green and blue edges, brighter with depth
+        const rgb = k % 3 === 0 ? "78, 168, 255" : "93, 255, 176";
+        ctx.strokeStyle = `rgba(${rgb}, ${0.08 + 0.16 * a})`;
         ctx.beginPath();
         ctx.moveTo(P[i][0], P[i][1]);
         ctx.lineTo(P[j][0], P[j][1]);
         ctx.stroke();
       }
 
+      // node palette: most green, every 3rd blue, every 5th violet
+      const palette = ["93, 255, 176", "78, 168, 255", "155, 140, 255"];
       P.forEach(([x, y, depth], i) => {
         const pulse = 0.5 + 0.5 * Math.sin(t * 1.3 + i * 0.7);
-        const r = (1.7 + 0.9 * pulse) * (0.65 + 0.55 * depth);
-        ctx.shadowColor = "rgba(139, 124, 246, 0.9)";
-        ctx.shadowBlur = 9 * depth;
-        ctx.fillStyle = `rgba(${i % 5 === 0 ? "139, 124, 246" : "99, 242, 197"}, ${0.55 + 0.4 * depth})`;
+        const r = (1.8 + 1.0 * pulse) * (0.65 + 0.55 * depth);
+        const rgb = i % 5 === 0 ? palette[2] : i % 3 === 0 ? palette[1] : palette[0];
+        ctx.shadowColor = `rgba(${rgb}, 0.95)`;
+        ctx.shadowBlur = 12 * depth;
+        ctx.fillStyle = `rgba(${rgb}, ${0.6 + 0.4 * depth})`;
         ctx.beginPath();
         ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fill();

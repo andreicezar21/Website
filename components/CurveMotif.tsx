@@ -45,9 +45,12 @@ function tracePolylines(kind: Project["motif"]): Pt[][] {
   return lines;
 }
 
-const ACCENT = "rgba(99, 242, 197, 0.85)";
-const ACCENT_FAINT = "rgba(148, 184, 173, 0.10)";
-const VIOLET = "rgba(139, 124, 246, 0.95)";
+const ACCENT = "rgba(93, 255, 176, 0.95)";
+const ACCENT_GLOW = "rgba(93, 255, 176, 0.55)";
+const BLUE = "rgba(78, 168, 255, 0.92)";
+const BLUE_GLOW = "rgba(78, 168, 255, 0.5)";
+const ACCENT_FAINT = "rgba(120, 200, 255, 0.12)";
+const VIOLET = "rgba(155, 140, 255, 0.98)";
 
 // Cayley graph of Z/8 with generator 3 — the star polygon {8/3}.
 function drawGroup(ctx: CanvasRenderingContext2D, w: number, h: number) {
@@ -63,7 +66,9 @@ function drawGroup(ctx: CanvasRenderingContext2D, w: number, h: number) {
   ctx.stroke();
 
   ctx.strokeStyle = ACCENT;
-  ctx.lineWidth = 1.2;
+  ctx.lineWidth = 1.4;
+  ctx.shadowColor = ACCENT_GLOW;
+  ctx.shadowBlur = 7;
   ctx.beginPath();
   let i = 0;
   ctx.moveTo(...v(0));
@@ -72,11 +77,12 @@ function drawGroup(ctx: CanvasRenderingContext2D, w: number, h: number) {
     ctx.lineTo(...v(i));
   } while (i !== 0);
   ctx.stroke();
+  ctx.shadowBlur = 0;
 
-  ctx.fillStyle = ACCENT;
   for (let k = 1; k < 8; k++) {
+    ctx.fillStyle = k % 2 === 0 ? BLUE : ACCENT;
     ctx.beginPath();
-    ctx.arc(...v(k), 1.8, 0, Math.PI * 2);
+    ctx.arc(...v(k), 1.9, 0, Math.PI * 2);
     ctx.fill();
   }
   ctx.fillStyle = VIOLET; // the identity
@@ -94,14 +100,17 @@ function drawPi(ctx: CanvasRenderingContext2D, w: number, h: number) {
   ctx.beginPath(); ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2); ctx.stroke();
 
   ctx.strokeStyle = ACCENT;
-  ctx.lineWidth = 1.2;
+  ctx.lineWidth = 1.4;
+  ctx.shadowColor = ACCENT_GLOW;
+  ctx.shadowBlur = 7;
   ctx.beginPath();
   ctx.arc(w / 2, h / 2, r, 0, Math.PI * 2);
   ctx.stroke();
+  ctx.shadowBlur = 0;
 
-  ctx.fillStyle = ACCENT;
+  ctx.fillStyle = BLUE;
   ctx.beginPath();
-  ctx.arc(w / 2 + r, h / 2, 1.8, 0, Math.PI * 2);
+  ctx.arc(w / 2 + r, h / 2, 2.0, 0, Math.PI * 2);
   ctx.fill();
   ctx.fillStyle = VIOLET;
   ctx.beginPath();
@@ -125,10 +134,10 @@ function drawGrid(ctx: CanvasRenderingContext2D, w: number, h: number) {
       ctx.arc(cx, cy, 2.4, 0, Math.PI * 2);
       ctx.fill();
     } else {
-      ctx.strokeStyle = ACCENT;
-      ctx.lineWidth = 1.2;
+      ctx.strokeStyle = (i + Math.floor(i / 4)) % 2 === 0 ? ACCENT : BLUE;
+      ctx.lineWidth = 1.3;
       ctx.beginPath();
-      ctx.arc(cx, cy, 1.8, 0, Math.PI * 2);
+      ctx.arc(cx, cy, 1.9, 0, Math.PI * 2);
       ctx.stroke();
     }
   }
@@ -175,22 +184,36 @@ export default function CurveMotif({ kind }: { kind: Project["motif"] }) {
     const py = (y: number) => h / 2 - (y - cy) * s;
 
     ctx.clearRect(0, 0, w, h);
-    ctx.strokeStyle = "rgba(148, 184, 173, 0.10)";
+    ctx.strokeStyle = ACCENT_FAINT;
     ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(px(0), 0); ctx.lineTo(px(0), h); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(0, py(0)); ctx.lineTo(w, py(0)); ctx.stroke();
 
-    ctx.strokeStyle = "rgba(99, 242, 197, 0.85)";
-    ctx.lineWidth = 1.2;
+    // faint blue under-stroke, offset, for a chromatic-edge glow
+    ctx.strokeStyle = BLUE_GLOW;
+    ctx.lineWidth = 2.4;
+    ctx.shadowColor = BLUE_GLOW;
+    ctx.shadowBlur = 6;
     for (const pts of lines) {
       ctx.beginPath();
       pts.forEach(([x, y], i) => (i === 0 ? ctx.moveTo(px(x), py(y)) : ctx.lineTo(px(x), py(y))));
       ctx.stroke();
     }
 
-    ctx.fillStyle = "rgba(139, 124, 246, 0.95)";
+    ctx.strokeStyle = ACCENT;
+    ctx.lineWidth = 1.3;
+    ctx.shadowColor = ACCENT_GLOW;
+    ctx.shadowBlur = 7;
+    for (const pts of lines) {
+      ctx.beginPath();
+      pts.forEach(([x, y], i) => (i === 0 ? ctx.moveTo(px(x), py(y)) : ctx.lineTo(px(x), py(y))));
+      ctx.stroke();
+    }
+    ctx.shadowBlur = 0;
+
+    ctx.fillStyle = VIOLET;
     ctx.beginPath();
-    ctx.arc(px(0), py(0), 2.4, 0, Math.PI * 2);
+    ctx.arc(px(0), py(0), 2.6, 0, Math.PI * 2);
     ctx.fill();
   }, [kind]);
 

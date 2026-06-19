@@ -117,6 +117,8 @@ void main() {
   march(ro, rd, tHit, halo, occ);
 
   vec3 accent = vec3(0.388, 0.949, 0.773);
+  vec3 hot    = vec3(0.365, 1.000, 0.690); // brighter highlight green
+  vec3 blue   = vec3(0.306, 0.659, 1.000); // electric blue
   vec3 violet = vec3(0.545, 0.486, 0.965);
 
   vec3 col = vec3(0.0);
@@ -139,23 +141,30 @@ void main() {
     float nodeF = smoothstep(3.2, 0.25, gm);
     float pulse = 0.85 + 0.15 * sin(uTime * 1.4 + q.x * 3.0 + q.y * 2.0);
 
+    // cool base fill: blue picks up the shadowed faces, green the lit ones
     vec3 c = vec3(0.040, 0.058, 0.085) * (0.35 + 0.65 * dif);
-    c += accent * fre * 0.34;
-    c += vec3(0.9, 0.95, 1.0) * spe * 0.5;
+    c += blue * (1.0 - dif) * 0.07;
+    // rim light: blue→green fresnel with a hot-green crest on the silhouette
+    c += mix(blue, accent, 0.55) * fre * 0.55;
+    c += hot * pow(fre, 1.6) * 0.30;
+    c += vec3(0.85, 1.0, 0.95) * spe * 0.7;
     c += violet * nodeF * pulse * 1.15;
 
     float band = exp(-pow((q.z - uScanZ) * 16.0, 2.0));
-    c += accent * band * uScanOn * 0.85;
+    c += hot * band * uScanOn * 1.0;
 
     c *= 1.0 - occ * 0.55;
 
-    vec3 emissive = violet * nodeF * pulse * 1.6 + accent * nodeF * 0.25;
+    // nodes flare brightest — violet core, green-blue halo
+    vec3 emissive = violet * nodeF * pulse * 1.7
+                  + hot * nodeF * 0.55
+                  + blue * nodeF * 0.30;
     col = mix(c, emissive, uDissolve);
     alpha = mix(1.0, nodeF * (0.8 + 0.2 * pulse), uDissolve);
   }
 
-  col += accent * aura * (0.10 + 0.25 * uDissolve);
-  alpha = max(alpha, aura * (0.35 + 0.3 * uDissolve));
+  col += mix(accent, blue, 0.35) * aura * (0.14 + 0.30 * uDissolve);
+  alpha = max(alpha, aura * (0.40 + 0.3 * uDissolve));
 
   col *= 1.0 - uDim * 0.82;
   alpha *= 1.0 - uDim * 0.55;

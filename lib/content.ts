@@ -64,12 +64,25 @@ export const projects: Project[] = [
   },
 ];
 
+export interface Photo {
+  src: string; // drop the file in public/photos/ and point this at it
+  caption: string;
+  tag: string; // short mono label, e.g. a place or a theorem
+  rotate?: number; // small tilt in degrees for the pinned-photo look
+}
+
 export interface CvEntry {
   title: string;
   org?: string;
   period: string;
   detail?: string;
+  aside?: string; // a human margin-note; edit freely or delete
+  photo?: Photo;
 }
+
+// First-person line that opens the CV — keeps it from reading like a template.
+export const cvIntro =
+  "Less a résumé than a record of what I've actually been up to: the courses, the teaching, the odd honour — and a couple of photographs the formatting can't hold.";
 
 export const cv: {
   education: CvEntry[];
@@ -83,6 +96,7 @@ export const cv: {
       title: "Bachelor of Mathematics, Pure Mathematics",
       org: "University of Waterloo",
       period: "2025 – 2030",
+      aside: "Working through the core — algebra, analysis, and the bridges between them.",
     },
   ],
   work: [
@@ -102,6 +116,12 @@ export const cv: {
       title: "Valedictorian",
       org: "Lisgar Collegiate Institute",
       period: "2025",
+      photo: {
+        src: "/photos/podium.jpg",
+        caption: "Valedictory address — Fairmont Château Laurier",
+        tag: "2025 · the last word",
+        rotate: -2.2,
+      },
     },
   ],
   teaching: [
@@ -109,6 +129,13 @@ export const cv: {
       title: "Mathematics & Science Tutor",
       org: "Lisgar Collegiate Institute",
       period: "2023 – 2025",
+      aside: "Where I learned that explaining a proof is the fastest way to find the hole in it.",
+      photo: {
+        src: "/photos/chalkboard.jpg",
+        caption: "At the board — Baire category and the irrationals",
+        tag: "ℝ∖ℚ is a dense Gδ",
+        rotate: 1.8,
+      },
     },
   ],
   skills: [

@@ -5,7 +5,8 @@ import CurveMotif from "@/components/CurveMotif";
 import Constellation from "@/components/Constellation";
 import Reveals from "@/components/Reveals";
 import EmailLink from "@/components/EmailLink";
-import { site, about, projects, cv, cvPdf, links, asset, type CvEntry } from "@/lib/content";
+import PhotoFrame from "@/components/PhotoFrame";
+import { site, about, projects, cv, cvPdf, cvIntro, links, asset, type CvEntry } from "@/lib/content";
 
 const cvSections: { label: string; entries: CvEntry[] }[] = [
   { label: "Education", entries: cv.education },
@@ -95,6 +96,9 @@ export default function Page() {
               <h2>Curriculum Vitae</h2>
               <span className="sec-sub">invariants</span>
             </div>
+            <p className="cv-intro" data-reveal>
+              {cvIntro}
+            </p>
             <div className="cv-actions" data-reveal>
               {cvPdf.available ? (
                 <a className="btn" href={asset(cvPdf.href)} download>
@@ -107,16 +111,21 @@ export default function Page() {
             {cvSections.map((s) => (
               <div className="cv-block" data-reveal key={s.label}>
                 <h3>{s.label}</h3>
-                {s.entries.map((e, i) => (
-                  <div className="cv-entry" key={i}>
-                    <div className="cv-period">{e.period}</div>
-                    <div>
-                      <h4>{e.title}</h4>
-                      {e.org && <div className="cv-org">{e.org}</div>}
-                      {e.detail && <div className="cv-detail">{e.detail}</div>}
+                <div className="cv-rail">
+                  {s.entries.map((e, i) => (
+                    <div className={`cv-node${e.photo ? " has-photo" : ""}`} key={i}>
+                      <span className="cv-dot" aria-hidden="true" />
+                      <div className="cv-period">{e.period}</div>
+                      <div className="cv-body">
+                        <h4>{e.title}</h4>
+                        {e.org && <div className="cv-org">{e.org}</div>}
+                        {e.detail && <div className="cv-detail">{e.detail}</div>}
+                        {e.aside && <p className="cv-aside">{e.aside}</p>}
+                      </div>
+                      {e.photo && <PhotoFrame photo={e.photo} />}
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             ))}
             <div className="cv-block" data-reveal>
