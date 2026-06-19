@@ -1,6 +1,5 @@
-const isGithubActions = process.env.GITHUB_ACTIONS === "true";
-const repoName = "Website";
-const basePath = isGithubActions ? `/${repoName}` : "";
+// Custom domain is set — no basePath needed (site is at root of the domain)
+const basePath = "";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

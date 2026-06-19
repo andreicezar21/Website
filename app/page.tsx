@@ -1,7 +1,7 @@
 import SurfaceCanvas from "@/components/SurfaceCanvas";
 import Hud from "@/components/Hud";
 import PencilCanvas from "@/components/PencilCanvas";
-import ComplexRootsCanvas from "@/components/ComplexRootsCanvas";
+import RootsOfUnityCanvas from "@/components/RootsOfUnityCanvas";
 import CurveMotif from "@/components/CurveMotif";
 import Constellation from "@/components/Constellation";
 import Reveals from "@/components/Reveals";
@@ -71,8 +71,8 @@ export default function Page() {
                 <span className="viz-label">pencil y² = x³ + ax + b · live discriminant</span>
               </div>
               <div className="viz-box">
-                <ComplexRootsCanvas />
-                <span className="viz-label">z² + 1 = 0 · two roots appear off ℝ</span>
+                <RootsOfUnityCanvas />
+                <span className="viz-label">xⁿ − 1 = 0 · primitive roots highlighted</span>
               </div>
             </div>
           </div>
