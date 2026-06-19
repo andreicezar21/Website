@@ -73,6 +73,18 @@ export const projects: Project[] = [
     thumb: "/projects/thumbs/A_Probabilistic_Analysis_and_Optimization_of_a_Casino_Game.png",
     motif: "grid",
   },
+  {
+    title:
+      "Spousal Homicide Rates in Ontario and Quebec: Regional Patterns and the Relationship with Divorce",
+    coauthors: "A. C. Dragomir",
+    venue: "Statistical study · Statistics Canada data",
+    year: "2024",
+    abstract:
+      "A statistical study of spousal homicide in Ontario and Quebec from 1997–2023, built on Statistics Canada data. Compares the two provinces through numerical summaries, box plots, histograms, normality tests, and time series, then fits a linear regression between Ontario's divorce and spousal-homicide rates. Finds Ontario's rate higher and steadier than Quebec's, and a moderate positive correlation between divorce and spousal homicide that strengthens once a 2001 outlier is removed.",
+    pdf: "/projects/spousal-homicide-ontario-quebec.pdf",
+    thumb: "/projects/thumbs/spousal-homicide-ontario-quebec.png",
+    motif: "node",
+  },
 ];
 
 export interface Photo {

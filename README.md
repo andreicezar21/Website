@@ -35,7 +35,7 @@ Deploy: push to GitHub and import in Vercel (zero config), or `npx vercel`.
 
 Anything in `[square brackets]` is a placeholder:
 
-1. **About** — replace the bracketed sentences (LinkedIn blocks automated reading,
+1. **About** — replace the bracketed sentences (LinkedIn blocks automated reading,1
    so education/program details could not be pre-filled; paste yours).
 2. **Papers** — one entry per paper; drop PDFs in `public/papers/` and point the
    `pdf` field at them. Motif options: `node`, `cusp`, `lemniscate`, `trifolium`.
