@@ -161,7 +161,7 @@ h2 {
   font-weight: 700;
   color: var(--bright);
   font-size: clamp(1.6rem, 3.2vw, 2.35rem);
-  letter-spacing: -0.012em;
+  letter-spacing: 0;
 }
 
 /* the violet node-dot — same mark the curve badges set at a singular point */
@@ -227,11 +227,11 @@ h1.name {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(2.9rem, 8vw, 6rem);
-  line-height: 1.0;
-  letter-spacing: -0.02em;
+  line-height: 1.05;
+  letter-spacing: 0;
   color: var(--bright);
   margin: 18px 0 22px;
-  max-width: 14ch;
+  max-width: 15ch;
 }
 
 .tagline {
@@ -599,16 +599,6 @@ h1.name {
   max-width: 54ch;
   padding-left: 11px;
   border-left: 1px solid var(--line-strong);
-}
-
-/* compact the photos attached to CV entries so rows stay dense */
-.cv-entry .photo-frame {
-  width: 132px;
-  margin: 2px 0 0;
-}
-
-.cv-entry .photo-frame .photo-well img {
-  height: 150px;
 }
 
 /* ── Pinned photographs ─────────────────────────────────────────── */

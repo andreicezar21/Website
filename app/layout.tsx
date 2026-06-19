@@ -1,15 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Sans, IBM_Plex_Sans_Condensed, IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { site } from "@/lib/content";
 
-// One engineered superfamily: condensed sans headlines (technical, blueprint
-// character), Plex Sans body, and Plex Mono for the corner HUD readouts.
-const display = IBM_Plex_Sans_Condensed({
-  subsets: ["latin"],
-  weight: ["600", "700"],
+// Headers are Computer Modern Bold — the Latin Modern / LaTeX \section face —
+// self-hosted (OFL). Body stays Plex Sans, HUD stays Plex Mono.
+const display = localFont({
+  src: "./fonts/cmunbx.woff",
   variable: "--font-display",
   display: "swap",
+  weight: "400 700",
 });
 
 const body = IBM_Plex_Sans({
