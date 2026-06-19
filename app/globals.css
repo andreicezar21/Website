@@ -28,9 +28,9 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-body), Georgia, "Times New Roman", serif;
-  font-size: 17px;
-  line-height: 1.7;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 15.5px;
+  line-height: 1.62;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -136,7 +136,7 @@ main {
 }
 
 section.block {
-  padding: 19vh 0;
+  padding: 13vh 0;
   position: relative;
 }
 
@@ -158,10 +158,10 @@ section.block {
 
 h2 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--bright);
-  font-size: clamp(1.55rem, 3vw, 2.2rem);
-  letter-spacing: -0.03em;
+  font-size: clamp(1.6rem, 3.2vw, 2.35rem);
+  letter-spacing: -0.012em;
 }
 
 /* the violet node-dot — same mark the curve badges set at a singular point */
@@ -225,13 +225,13 @@ h2::after {
 
 h1.name {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2.3rem, 6vw, 4.6rem);
-  line-height: 1.06;
-  letter-spacing: -0.045em;
+  font-weight: 700;
+  font-size: clamp(2.9rem, 8vw, 6rem);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
   color: var(--bright);
   margin: 18px 0 22px;
-  max-width: 15ch;
+  max-width: 14ch;
 }
 
 .tagline {
@@ -337,9 +337,9 @@ h1.name {
 
 .paper {
   display: grid;
-  grid-template-columns: 104px 1fr;
-  gap: 26px;
-  padding: 26px 28px;
+  grid-template-columns: 92px minmax(0, 1fr) 124px;
+  gap: 24px;
+  padding: 22px 24px;
   border: 1px solid var(--line);
   background: var(--panel);
   backdrop-filter: blur(7px);
@@ -355,17 +355,41 @@ h1.name {
 }
 
 .paper-motif {
-  width: 104px;
-  height: 104px;
+  width: 92px;
+  height: 92px;
   border: 1px solid var(--line);
   background: rgba(5, 8, 12, 0.5);
+}
+
+/* clickable first-page preview of the PDF, on the right of each project */
+.paper-thumb {
+  display: block;
+  align-self: start;
+  width: 124px;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #fff;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.paper-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.paper-thumb:hover {
+  border-color: rgba(99, 242, 197, 0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
 .paper h3 {
   font-family: var(--font-display);
   color: var(--bright);
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 1.18rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
   margin-bottom: 6px;
 }
@@ -440,31 +464,31 @@ h1.name {
 /* ── CV ─────────────────────────────────────────────────────────── */
 
 .cv-actions {
-  margin-bottom: 2.4rem;
+  margin-bottom: 1.6rem;
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
 }
 
 .cv-block + .cv-block {
-  margin-top: 4.2rem;
+  margin-top: 2.2rem;
 }
 
 .cv-block h3 {
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
-  font-weight: 600;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--bright);
-  margin-bottom: 1.6rem;
+  margin-bottom: 0.9rem;
   display: flex;
-  gap: 16px;
+  gap: 14px;
   align-items: center;
 }
 
 .cv-block h3::before {
   content: "";
-  width: 30px;
+  width: 26px;
   height: 3px;
   border-radius: 2px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
@@ -472,17 +496,6 @@ h1.name {
 
 .cv-block:nth-of-type(even) h3::before {
   background: linear-gradient(90deg, var(--accent-2), var(--accent-3));
-}
-
-.cv-intro {
-  max-width: 60ch;
-  font-size: clamp(1.02rem, 1.5vw, 1.18rem);
-  line-height: 1.7;
-  color: #aab6c0;
-  font-style: italic;
-  margin-bottom: 2.2rem;
-  border-left: 2px solid var(--accent);
-  padding-left: 18px;
 }
 
 /* LinkedIn-style cards: a bordered panel per section, logo-led entries */
@@ -496,14 +509,14 @@ h1.name {
 
 .cv-entry {
   display: grid;
-  grid-template-columns: 54px minmax(0, 1fr);
-  gap: 18px;
-  padding: 22px clamp(18px, 3vw, 26px);
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px clamp(14px, 2.4vw, 20px);
   align-items: start;
 }
 
 .cv-entry.has-photo {
-  grid-template-columns: 54px minmax(0, 1fr) auto;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
 }
 
 .cv-entry + .cv-entry {
@@ -511,8 +524,8 @@ h1.name {
 }
 
 .cv-logo {
-  width: 54px;
-  height: 54px;
+  width: 44px;
+  height: 44px;
   border-radius: 3px;
   background: #f3f5f7;
   display: flex;
@@ -527,15 +540,15 @@ h1.name {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 5px;
+  padding: 4px;
 }
 
 .cv-logo--mono {
   background: var(--mono, #2a3340);
   color: #fff;
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 17px;
+  font-weight: 700;
+  font-size: 14px;
   letter-spacing: 0.02em;
   border-color: rgba(255, 255, 255, 0.14);
 }
@@ -547,46 +560,55 @@ h1.name {
 
 .cv-entry-main {
   min-width: 0;
-  padding-top: 1px;
 }
 
 .cv-entry-main h4 {
   font-family: var(--font-display);
   color: var(--bright);
-  font-weight: 500;
-  font-size: 1.16rem;
+  font-weight: 600;
+  font-size: 1.02rem;
   letter-spacing: -0.005em;
 }
 
 .cv-org {
   color: var(--violet-text);
-  font-size: 0.96rem;
-  margin-top: 2px;
+  font-size: 0.88rem;
+  margin-top: 1px;
 }
 
 .cv-period {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--accent-3);
   letter-spacing: 0.06em;
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .cv-detail {
-  margin-top: 9px;
-  font-size: 0.95rem;
+  margin-top: 5px;
+  font-size: 0.86rem;
   color: #97a2ad;
   max-width: 60ch;
 }
 
 .cv-aside {
-  margin-top: 11px;
-  font-size: 0.92rem;
+  margin-top: 6px;
+  font-size: 0.84rem;
   font-style: italic;
   color: #8a96a1;
   max-width: 54ch;
-  padding-left: 12px;
+  padding-left: 11px;
   border-left: 1px solid var(--line-strong);
+}
+
+/* compact the photos attached to CV entries so rows stay dense */
+.cv-entry .photo-frame {
+  width: 132px;
+  margin: 2px 0 0;
+}
+
+.cv-entry .photo-frame .photo-well img {
+  height: 150px;
 }
 
 /* ── Pinned photographs ─────────────────────────────────────────── */

@@ -35,6 +35,7 @@ export interface Project {
   year: string;
   abstract: string;
   pdf: string; // drop the file in public/projects/ and point this at it
+  thumb: string; // first-page preview (public/projects/thumbs/), links to the pdf
   motif: "node" | "cusp" | "lemniscate" | "trifolium" | "group" | "pi" | "grid";
 }
 
@@ -47,6 +48,7 @@ export const projects: Project[] = [
     abstract:
       "Develops the basic character theory of finite groups — Schur's lemma, orthogonality of characters, and integrality of character values — and uses it to prove Burnside's theorem: every group of order pᵃqᵇ is solvable.",
     pdf: "/projects/burnside-theorem.pdf",
+    thumb: "/projects/thumbs/burnside-theorem.png",
     motif: "group",
   },
   {
@@ -57,6 +59,7 @@ export const projects: Project[] = [
     abstract:
       "A proof of the Lindemann–Weierstrass theorem — exponentials of distinct algebraic numbers are linearly independent over the algebraic numbers — from which the transcendence of π and e falls out as a corollary.",
     pdf: "/projects/transcendence-of-pi.pdf",
+    thumb: "/projects/thumbs/transcendence-of-pi.png",
     motif: "pi",
   },
   {
@@ -67,6 +70,7 @@ export const projects: Project[] = [
     abstract:
       "Designs a 4×4 minesweeper-style casino game, derives the distribution of the losing round and a payout function that holds the house edge in a target band, then validates the model against live data from a real casino night.",
     pdf: "/projects/A_Probabilistic_Analysis_and_Optimization_of_a_Casino_Game.pdf",
+    thumb: "/projects/thumbs/A_Probabilistic_Analysis_and_Optimization_of_a_Casino_Game.png",
     motif: "grid",
   },
 ];

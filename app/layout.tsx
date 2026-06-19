@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, STIX_Two_Text } from "next/font/google";
+import { IBM_Plex_Sans, IBM_Plex_Sans_Condensed, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/content";
 
-// Headlines speak in the same monospace as the corner HUD readouts; the body
-// is STIX Two Text, the serif engineered for typesetting mathematics.
-const display = IBM_Plex_Mono({
+// One engineered superfamily: condensed sans headlines (technical, blueprint
+// character), Plex Sans body, and Plex Mono for the corner HUD readouts.
+const display = IBM_Plex_Sans_Condensed({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["600", "700"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = STIX_Two_Text({
+const body = IBM_Plex_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"],
   variable: "--font-body",
   display: "swap",
 });

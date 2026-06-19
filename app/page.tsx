@@ -13,7 +13,6 @@ import {
   projects,
   cv,
   cvPdf,
-  cvIntro,
   courses,
   coursesPhoto,
   links,
@@ -79,48 +78,13 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="block" id="projects">
-          <div className="wrap">
-            <div className="sec-head" data-reveal>
-              <span className="sec-index">§2</span>
-              <h2>Projects</h2>
-              <span className="sec-sub">vanishing loci</span>
-            </div>
-            <div className="papers">
-              {projects.map((p, i) => (
-                <article className="paper" data-reveal key={i}>
-                  <div className="paper-motif">
-                    <CurveMotif kind={p.motif} />
-                  </div>
-                  <div>
-                    <h3>{p.title}</h3>
-                    <div className="paper-meta">
-                      {p.coauthors} · {p.venue} · {p.year}
-                    </div>
-                    <p className="paper-abs">{p.abstract}</p>
-                    <div className="paper-links">
-                      <a className="btn" href={asset(p.pdf)} target="_blank" rel="noreferrer">
-                        PDF ↗
-                      </a>
-                    </div>
-                  </div>
-                  <span className="paper-num">{String(i + 1).padStart(2, "0")}</span>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="block" id="cv">
           <div className="wrap">
             <div className="sec-head" data-reveal>
-              <span className="sec-index">§3</span>
+              <span className="sec-index">§2</span>
               <h2>Curriculum Vitae</h2>
               <span className="sec-sub">invariants</span>
             </div>
-            <p className="cv-intro" data-reveal>
-              {cvIntro}
-            </p>
             <div className="cv-actions" data-reveal>
               {cvPdf.available ? (
                 <a className="btn" href={asset(cvPdf.href)} download>
@@ -164,6 +128,47 @@ export default function Page() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="block" id="projects">
+          <div className="wrap">
+            <div className="sec-head" data-reveal>
+              <span className="sec-index">§3</span>
+              <h2>Projects</h2>
+              <span className="sec-sub">vanishing loci</span>
+            </div>
+            <div className="papers">
+              {projects.map((p, i) => (
+                <article className="paper" data-reveal key={i}>
+                  <div className="paper-motif">
+                    <CurveMotif kind={p.motif} />
+                  </div>
+                  <div>
+                    <h3>{p.title}</h3>
+                    <div className="paper-meta">
+                      {p.coauthors} · {p.venue} · {p.year}
+                    </div>
+                    <p className="paper-abs">{p.abstract}</p>
+                    <div className="paper-links">
+                      <a className="btn" href={asset(p.pdf)} target="_blank" rel="noreferrer">
+                        PDF ↗
+                      </a>
+                    </div>
+                  </div>
+                  <a
+                    className="paper-thumb"
+                    href={asset(p.pdf)}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${p.title} (PDF)`}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={asset(p.thumb)} alt={`First page of ${p.title}`} loading="lazy" />
+                  </a>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
