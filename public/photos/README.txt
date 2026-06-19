@@ -1,11 +1,10 @@
-Drop your two photographs here so the CV section displays them:
+Photographs used on the site (referenced from lib/content.ts):
 
-  podium.jpg      — the Fairmont Château Laurier podium / valedictory photo
-  chalkboard.jpg  — the photo at the blackboard (Baire category)
+  valedictorian.jpg  — CV ▸ Awards ▸ Valedictorian (the x²+1=0 chalkboard)
+  chalkboard.jpg     — CV ▸ Teaching (Baire category theorem)
+  exam-hall.jpg      — About column candid
 
-Filenames must match exactly (lowercase). JPG or PNG both work — if you use
-PNG, change the `src` extension in lib/content.ts to match.
-
-Recommended: crop to roughly a 3:4 (portrait) ratio, ~1000px on the short
-edge, and keep each file under ~500 KB so the page stays fast. Until the
-files are present, the site shows a styled placeholder in their place.
+Filenames must match exactly (lowercase). To swap any photo, drop a new file
+with the same name here (JPG or PNG — if PNG, update the `src` extension in
+lib/content.ts). Recommended: keep each file under ~1 MB so the page stays
+fast. Until a referenced file is present, the site shows a styled placeholder.

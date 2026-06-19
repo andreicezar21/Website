@@ -1,6 +1,7 @@
 import SurfaceCanvas from "@/components/SurfaceCanvas";
 import Hud from "@/components/Hud";
 import PencilCanvas from "@/components/PencilCanvas";
+import ComplexRootsCanvas from "@/components/ComplexRootsCanvas";
 import CurveMotif from "@/components/CurveMotif";
 import Constellation from "@/components/Constellation";
 import Reveals from "@/components/Reveals";
@@ -49,12 +50,18 @@ export default function Page() {
                   <p key={i}>{p}</p>
                 ))}
               </div>
-              <div className="about-aside" data-reveal>
+              <div className="about-portrait" data-reveal>
                 <PhotoFrame photo={about.photo} wide />
-                <div className="pencil-box">
-                  <PencilCanvas />
-                  <span className="pencil-label">pencil y² = x³ + ax + b · live discriminant</span>
-                </div>
+              </div>
+            </div>
+            <div className="about-viz" data-reveal>
+              <div className="viz-box">
+                <PencilCanvas />
+                <span className="viz-label">pencil y² = x³ + ax + b · live discriminant</span>
+              </div>
+              <div className="viz-box">
+                <ComplexRootsCanvas />
+                <span className="viz-label">z² + 1 = 0 · two roots appear off ℝ</span>
               </div>
             </div>
           </div>
@@ -131,16 +138,6 @@ export default function Page() {
                 </div>
               </div>
             ))}
-            <div className="cv-block" data-reveal>
-              <h3>Skills</h3>
-              <div className="skills-row">
-                {cv.skills.map((s) => (
-                  <span className="chip" key={s}>
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 

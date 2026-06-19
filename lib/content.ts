@@ -17,7 +17,7 @@ export const site = {
 export const about = {
   paragraphs: [
     "I'm a pure mathematics student at the University of Waterloo, working through the core of the subject — algebra, analysis, and the structures that connect them. Lately that has meant fields and Galois theory, group representations, and a growing collection of write-ups, some of which live in the Projects section below.",
-    "The visuals on this site borrow their language from algebraic geometry: every figure rendered here is the zero locus of an explicit polynomial, deformed live as you scroll. It's an aesthetic, not a research statement — the actual mathematics lives in the write-ups.",
+    "The visuals on this site borrow their language from algebraic geometry: every figure rendered here is the zero locus of an explicit polynomial, deformed live as you scroll.",
   ],
   // Candid for the About column — edit the caption/tag to taste.
   photo: {
@@ -96,7 +96,6 @@ export const cv: {
   work: CvEntry[];
   awards: CvEntry[];
   teaching: CvEntry[];
-  skills: string[];
 } = {
   education: [
     {
@@ -124,9 +123,10 @@ export const cv: {
       org: "Lisgar Collegiate Institute",
       period: "2025",
       photo: {
-        src: "/photos/podium.jpg",
-        caption: "Valedictory address — Fairmont Château Laurier",
-        tag: "2025 · the last word",
+        src: "/photos/valedictorian.jpg",
+        caption:
+          "My valedictory address: x² + 1 = 0 has no answer until you widen the domain. Complex numbers were dismissed as impossible — that step outside the box was the revolution.",
+        tag: "expand your domain",
         rotate: -2.2,
       },
     },
@@ -139,19 +139,11 @@ export const cv: {
       aside: "Where I learned that explaining a proof is the fastest way to find the hole in it.",
       photo: {
         src: "/photos/chalkboard.jpg",
-        caption: "At the board — Baire category and the irrationals",
+        caption: "Walking a friend through the Baire category theorem — and why ℝ∖ℚ is a dense Gδ.",
         tag: "ℝ∖ℚ is a dense Gδ",
         rotate: 1.8,
       },
     },
-  ],
-  skills: [
-    "[Algebraic geometry]",
-    "[Commutative algebra]",
-    "[LaTeX]",
-    "[Python / SageMath]",
-    "[Macaulay2]",
-    "[Languages]",
   ],
 };
 

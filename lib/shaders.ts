@@ -120,6 +120,7 @@ void main() {
   vec3 hot    = vec3(0.365, 1.000, 0.690); // brighter highlight green
   vec3 blue   = vec3(0.306, 0.659, 1.000); // electric blue
   vec3 violet = vec3(0.545, 0.486, 0.965);
+  vec3 warm   = vec3(1.000, 0.760, 0.330); // warm gold — the contrasting highlight
 
   vec3 col = vec3(0.0);
   float alpha = 0.0;
@@ -148,6 +149,11 @@ void main() {
     c += mix(blue, accent, 0.55) * fre * 0.55;
     c += hot * pow(fre, 1.6) * 0.30;
     c += vec3(0.85, 1.0, 0.95) * spe * 0.7;
+    // tight gold glint — a warm highlight that pops against the cool body
+    float glint = pow(clamp(dot(n, hv), 0.0, 1.0), 200.0);
+    c += warm * glint * 0.9;
+    // a thin warm rim only on the very edge, contrasting the green-blue fresnel
+    c += warm * pow(fre, 5.0) * 0.22;
     c += violet * nodeF * pulse * 1.15;
 
     float band = exp(-pow((q.z - uScanZ) * 16.0, 2.0));
