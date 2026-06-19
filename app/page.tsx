@@ -49,9 +49,12 @@ export default function Page() {
                   <p key={i}>{p}</p>
                 ))}
               </div>
-              <div className="pencil-box" data-reveal>
-                <PencilCanvas />
-                <span className="pencil-label">pencil y² = x³ + ax + b · live discriminant</span>
+              <div className="about-aside" data-reveal>
+                <PhotoFrame photo={about.photo} wide />
+                <div className="pencil-box">
+                  <PencilCanvas />
+                  <span className="pencil-label">pencil y² = x³ + ax + b · live discriminant</span>
+                </div>
               </div>
             </div>
           </div>

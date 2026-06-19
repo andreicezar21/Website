@@ -7,12 +7,15 @@ import { asset, type Photo } from "@/lib/content";
 // isn't present yet (or fails to load) it falls back to a styled placeholder so
 // the layout always reads as intentional — drop the JPEGs into public/photos/
 // and they appear automatically.
-export default function PhotoFrame({ photo }: { photo: Photo }) {
+export default function PhotoFrame({ photo, wide = false }: { photo: Photo; wide?: boolean }) {
   const [failed, setFailed] = useState(false);
   const rot = photo.rotate ?? 0;
 
   return (
-    <figure className="photo-frame" style={{ ["--rot" as string]: `${rot}deg` }}>
+    <figure
+      className={`photo-frame${wide ? " photo-frame--wide" : ""}`}
+      style={{ ["--rot" as string]: `${rot}deg` }}
+    >
       <div className="photo-well">
         {failed ? (
           <div className="photo-missing">

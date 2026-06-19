@@ -19,6 +19,13 @@ export const about = {
     "I'm a pure mathematics student at the University of Waterloo, working through the core of the subject — algebra, analysis, and the structures that connect them. Lately that has meant fields and Galois theory, group representations, and a growing collection of write-ups, some of which live in the Projects section below.",
     "The visuals on this site borrow their language from algebraic geometry: every figure rendered here is the zero locus of an explicit polynomial, deformed live as you scroll. It's an aesthetic, not a research statement — the actual mathematics lives in the write-ups.",
   ],
+  // Candid for the About column — edit the caption/tag to taste.
+  photo: {
+    src: "/photos/exam-hall.jpg",
+    caption: "Exam season — a field house full of desks, one problem at a time",
+    tag: "find your seat number",
+    rotate: -1.4,
+  } as Photo,
 };
 
 export interface Project {

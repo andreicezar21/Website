@@ -271,9 +271,16 @@ h1.name {
   margin-top: 1.2em;
 }
 
+.about-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .pencil-box {
   position: relative;
-  min-height: 360px;
+  min-height: 300px;
+  flex: 1;
   border: 1px solid var(--line);
   background: linear-gradient(180deg, rgba(10, 15, 22, 0.5), rgba(7, 10, 15, 0.35));
 }
@@ -559,6 +566,16 @@ h1.name {
 
 .photo-frame:hover {
   transform: rotate(0deg) translateY(-3px);
+}
+
+/* wide variant — landscape candid that fills its column (e.g. About) */
+.photo-frame--wide {
+  width: 100%;
+  margin: 0;
+}
+
+.photo-frame--wide .photo-well img {
+  height: 200px;
 }
 
 .photo-well {
