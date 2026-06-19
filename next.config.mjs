@@ -1,5 +1,7 @@
-// Custom domain is set — no basePath needed (site is at root of the domain)
-const basePath = "";
+// Served from a GitHub Pages project repo, so assets live under /Website.
+// (When the custom domain is live, switch basePath back to "" and restore CNAME.)
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
+const basePath = isGithubActions ? "/Website" : "";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
