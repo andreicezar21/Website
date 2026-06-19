@@ -52,7 +52,7 @@ export default function Page() {
         <section className="block" id="about">
           <div className="wrap">
             <div className="sec-head" data-reveal>
-              <span className="sec-index">01</span>
+              <span className="sec-index">§1</span>
               <h2>About</h2>
               <span className="sec-sub">the base field</span>
             </div>
@@ -82,7 +82,7 @@ export default function Page() {
         <section className="block" id="projects">
           <div className="wrap">
             <div className="sec-head" data-reveal>
-              <span className="sec-index">02</span>
+              <span className="sec-index">§2</span>
               <h2>Projects</h2>
               <span className="sec-sub">vanishing loci</span>
             </div>
@@ -114,7 +114,7 @@ export default function Page() {
         <section className="block" id="cv">
           <div className="wrap">
             <div className="sec-head" data-reveal>
-              <span className="sec-index">03</span>
+              <span className="sec-index">§3</span>
               <h2>Curriculum Vitae</h2>
               <span className="sec-sub">invariants</span>
             </div>
@@ -170,7 +170,7 @@ export default function Page() {
         <section className="block" id="courses">
           <div className="wrap">
             <div className="sec-head" data-reveal>
-              <span className="sec-index">04</span>
+              <span className="sec-index">§4</span>
               <h2>Courses</h2>
               <span className="sec-sub">the syllabus</span>
             </div>
@@ -207,7 +207,7 @@ export default function Page() {
         <section className="contact" id="contact">
           <div className="wrap">
             <div className="contact-head" data-reveal>
-              <span className="sec-index">05</span>
+              <span className="sec-index">§5</span>
               <h2>Contact</h2>
             </div>
             <div className="constellation-box" data-reveal>

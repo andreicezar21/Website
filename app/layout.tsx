@@ -1,18 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Mono, STIX_Two_Text } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/content";
 
-const display = Space_Grotesk({
+// Headlines speak in the same monospace as the corner HUD readouts; the body
+// is STIX Two Text, the serif engineered for typesetting mathematics.
+const display = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["500", "600"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = IBM_Plex_Sans({
+const body = STIX_Two_Text({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   variable: "--font-body",
   display: "swap",
 });

@@ -28,9 +28,9 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 16.5px;
-  line-height: 1.75;
+  font-family: var(--font-body), Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -145,6 +145,8 @@ section.block {
   align-items: baseline;
   gap: 18px;
   margin-bottom: clamp(2.2rem, 5vh, 3.4rem);
+  padding-bottom: clamp(0.8rem, 1.6vh, 1.2rem);
+  border-bottom: 1px solid rgba(99, 242, 197, 0.32);
 }
 
 .sec-index {
@@ -158,12 +160,21 @@ h2 {
   font-family: var(--font-display);
   font-weight: 600;
   color: var(--bright);
-  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-  letter-spacing: -0.015em;
-  background: linear-gradient(100deg, var(--bright) 38%, var(--accent-hot) 76%, var(--accent-blue) 108%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  letter-spacing: -0.03em;
+}
+
+/* the violet node-dot — same mark the curve badges set at a singular point */
+h2::after {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 12px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow: 0 0 8px rgba(139, 124, 246, 0.75);
+  vertical-align: 0.14em;
 }
 
 .sec-sub {
@@ -215,16 +226,12 @@ h2 {
 h1.name {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.9rem, 8vw, 6.2rem);
-  line-height: 1.02;
-  letter-spacing: -0.022em;
+  font-size: clamp(2.3rem, 6vw, 4.6rem);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
   color: var(--bright);
-  background: linear-gradient(115deg, var(--bright) 55%, #b9e9da 80%, var(--violet-text) 105%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
   margin: 18px 0 22px;
-  max-width: 12ch;
+  max-width: 15ch;
 }
 
 .tagline {
@@ -336,7 +343,7 @@ h1.name {
   border: 1px solid var(--line);
   background: var(--panel);
   backdrop-filter: blur(7px);
-  border-radius: 3px;
+  border-radius: 2px;
   position: relative;
   transition: border-color 0.35s ease, transform 0.35s ease;
 }
@@ -481,7 +488,7 @@ h1.name {
 /* LinkedIn-style cards: a bordered panel per section, logo-led entries */
 .cv-card {
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 2px;
   background: var(--panel);
   backdrop-filter: blur(7px);
   overflow: hidden;
@@ -506,7 +513,7 @@ h1.name {
 .cv-logo {
   width: 54px;
   height: 54px;
-  border-radius: 10px;
+  border-radius: 3px;
   background: #f3f5f7;
   display: flex;
   align-items: center;
