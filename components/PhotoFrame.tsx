@@ -31,7 +31,7 @@ export default function PhotoFrame({ photo, wide = false }: { photo: Photo; wide
             onError={() => setFailed(true)}
           />
         )}
-        <span className="photo-tag">{photo.tag}</span>
+        {photo.tag && <span className="photo-tag">{photo.tag}</span>}
       </div>
       <figcaption className="photo-caption">{photo.caption}</figcaption>
     </figure>

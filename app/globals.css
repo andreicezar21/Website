@@ -273,24 +273,19 @@ h1.name {
 
 .about-portrait {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 26px;
 }
 
-/* unify the pinned candids to one column width; portrait tall, landscape short */
+/* single, prominent candid filling the About column */
 .about-portrait .photo-frame {
-  width: 264px;
+  width: 100%;
+  max-width: 440px;
   margin: 0;
 }
 
-.about-portrait .photo-frame .photo-well img {
-  height: 318px;
-}
-
 .about-portrait .photo-frame--wide .photo-well img {
-  height: 178px;
+  height: 300px;
 }
 
 /* two live algebraic-geometry canvases, side by side under the About text */
@@ -678,6 +673,107 @@ h1.name {
   opacity: 0.6;
 }
 
+/* ── Courses ────────────────────────────────────────────────────── */
+
+.courses-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.courses-groups {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vh, 3.2rem);
+}
+
+.course-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 1.3rem;
+}
+
+.course-group-head h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--bright);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.course-group-head h3::before {
+  content: "";
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.course-group--current .course-group-head h3::before {
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
+}
+
+.course-group-note {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--violet-text);
+  opacity: 0.7;
+}
+
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+  gap: 2px 26px;
+}
+
+.course-item {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.course-code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  min-width: 76px;
+  flex-shrink: 0;
+}
+
+.course-group--current .course-code {
+  color: var(--accent-blue);
+}
+
+.course-title {
+  color: #aab6c0;
+  font-size: 0.97rem;
+  line-height: 1.4;
+}
+
+.courses-aside {
+  position: sticky;
+  top: 12vh;
+}
+
+.courses-aside .photo-frame {
+  width: 248px;
+  margin: 0;
+}
+
+.courses-aside .photo-well img {
+  height: 320px;
+}
+
 /* ── Contact / footer ───────────────────────────────────────────── */
 
 .contact {
@@ -744,6 +840,9 @@ h1.name {
   .about-grid { grid-template-columns: 1fr; }
   .about-viz { grid-template-columns: 1fr; }
   .viz-box { min-height: 280px; }
+  .courses-layout { grid-template-columns: 1fr; }
+  .courses-aside { position: static; display: flex; justify-content: center; }
+  .course-list { grid-template-columns: 1fr; }
   .paper { grid-template-columns: 1fr; gap: 18px; }
   .paper-motif { width: 84px; height: 84px; }
   .cv-node,

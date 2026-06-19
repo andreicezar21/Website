@@ -19,21 +19,13 @@ export const about = {
     "I'm a pure mathematics student at the University of Waterloo, working through the core of the subject — algebra, analysis, and the structures that connect them. Lately that has meant fields and Galois theory, group representations, and a growing collection of write-ups, some of which live in the Projects section below.",
     "The visuals on this site borrow their language from algebraic geometry: every figure rendered here is the zero locus of an explicit polynomial, deformed live as you scroll.",
   ],
-  // Candids for the About column — edit the captions/tags to taste.
-  photos: [
-    {
-      src: "/photos/qnc.jpg",
-      caption: "QNC at golden hour — the Quantum-Nano Centre, looking up.",
-      tag: "glass & lattice",
-      rotate: 1.6,
-    },
-    {
-      src: "/photos/exam-hall.jpg",
-      caption: "Exam season — a field house full of desks, one problem at a time.",
-      tag: "find your seat number",
-      rotate: -1.8,
-    },
-  ] as Photo[],
+  // Candid for the About column — edit the caption/tag to taste.
+  photo: {
+    src: "/photos/exam-hall.jpg",
+    caption: "Exam season — a field house full of desks, one problem at a time.",
+    tag: "find your seat number",
+    rotate: -1.8,
+  } as Photo,
 };
 
 export interface Project {
@@ -82,7 +74,7 @@ export const projects: Project[] = [
 export interface Photo {
   src: string; // drop the file in public/photos/ and point this at it
   caption: string;
-  tag: string; // short mono label, e.g. a place or a theorem
+  tag?: string; // optional short mono label, e.g. a place or a theorem
   rotate?: number; // small tilt in degrees for the pinned-photo look
 }
 
@@ -114,7 +106,6 @@ export const cv: {
       photo: {
         src: "/photos/math145.jpg",
         caption: "Last lecture of MATH 145 — Galois theory on the board. One of the most fun courses I've taken.",
-        tag: "Aut(ℚ(∛2)/ℚ)",
         rotate: -1.6,
       },
     },
@@ -164,6 +155,48 @@ export const cv: {
 export const cvPdf = {
   available: false, // set true once you drop cv.pdf into public/
   href: "/cv.pdf",
+};
+
+export interface Course {
+  code: string;
+  title: string;
+}
+
+export const courses: { label: string; note: string; items: Course[] }[] = [
+  {
+    label: "Completed",
+    note: "courses behind me",
+    items: [
+      { code: "MATH 147", title: "Elementary Analysis 1" },
+      { code: "MATH 148", title: "Elementary Analysis 2" },
+      { code: "MATH 145", title: "Introduction to Number Theory and Abstract Algebra" },
+      { code: "PMATH 348", title: "Fields and Galois Theory" },
+      { code: "MATH 146", title: "Introduction to Linear Algebra" },
+      { code: "CS 135", title: "Functional Programming" },
+      { code: "CS 136", title: "Imperative Programming" },
+      { code: "ECON 101", title: "Microeconomics" },
+      { code: "ECON 102", title: "Macroeconomics" },
+    ],
+  },
+  {
+    label: "Fall 2026",
+    note: "in progress",
+    items: [
+      { code: "PMATH 446", title: "Introduction to Commutative Algebra" },
+      { code: "MATH 245", title: "Linear Algebra 2" },
+      { code: "MATH 247", title: "Multivariable Calculus" },
+      { code: "STAT 240", title: "Introduction to Probability" },
+      { code: "CS 246", title: "Introduction to Object-Oriented Programming" },
+    ],
+  },
+];
+
+// QNC building shot — lives in the Courses section.
+export const coursesPhoto: Photo = {
+  src: "/photos/qnc.jpg",
+  caption: "QNC at golden hour — the Quantum-Nano Centre, looking up.",
+  tag: "glass & lattice",
+  rotate: 1.6,
 };
 
 export const links: { label: string; href: string }[] = [

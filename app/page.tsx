@@ -7,7 +7,19 @@ import Constellation from "@/components/Constellation";
 import Reveals from "@/components/Reveals";
 import EmailLink from "@/components/EmailLink";
 import PhotoFrame from "@/components/PhotoFrame";
-import { site, about, projects, cv, cvPdf, cvIntro, links, asset, type CvEntry } from "@/lib/content";
+import {
+  site,
+  about,
+  projects,
+  cv,
+  cvPdf,
+  cvIntro,
+  courses,
+  coursesPhoto,
+  links,
+  asset,
+  type CvEntry,
+} from "@/lib/content";
 
 const cvSections: { label: string; entries: CvEntry[] }[] = [
   { label: "Education", entries: cv.education },
@@ -51,9 +63,7 @@ export default function Page() {
                 ))}
               </div>
               <div className="about-portrait" data-reveal>
-                {about.photos.map((p, i) => (
-                  <PhotoFrame key={i} photo={p} wide={p.src.includes("exam-hall")} />
-                ))}
+                <PhotoFrame photo={about.photo} wide />
               </div>
             </div>
             <div className="about-viz" data-reveal>
@@ -143,10 +153,47 @@ export default function Page() {
           </div>
         </section>
 
+        <section className="block" id="courses">
+          <div className="wrap">
+            <div className="sec-head" data-reveal>
+              <span className="sec-index">04</span>
+              <h2>Courses</h2>
+              <span className="sec-sub">the syllabus</span>
+            </div>
+            <div className="courses-layout">
+              <div className="courses-groups">
+                {courses.map((g) => (
+                  <div
+                    className={`course-group${g.note === "in progress" ? " course-group--current" : ""}`}
+                    data-reveal
+                    key={g.label}
+                  >
+                    <div className="course-group-head">
+                      <h3>{g.label}</h3>
+                      <span className="course-group-note">{g.note}</span>
+                    </div>
+                    <div className="course-list">
+                      {g.items.map((c) => (
+                        <div className="course-item" key={c.code}>
+                          <span className="course-code">{c.code}</span>
+                          <span className="course-title">{c.title}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="courses-aside" data-reveal>
+                <PhotoFrame photo={coursesPhoto} />
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="contact" id="contact">
           <div className="wrap">
             <div className="contact-head" data-reveal>
-              <span className="sec-index">04</span>
+              <span className="sec-index">05</span>
               <h2>Contact</h2>
             </div>
             <div className="constellation-box" data-reveal>
