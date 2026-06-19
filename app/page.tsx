@@ -5,7 +5,7 @@ import CurveMotif from "@/components/CurveMotif";
 import Constellation from "@/components/Constellation";
 import Reveals from "@/components/Reveals";
 import EmailLink from "@/components/EmailLink";
-import { site, about, projects, cv, cvPdf, links, type CvEntry } from "@/lib/content";
+import { site, about, projects, cv, cvPdf, links, asset, type CvEntry } from "@/lib/content";
 
 const cvSections: { label: string; entries: CvEntry[] }[] = [
   { label: "Education", entries: cv.education },
@@ -76,7 +76,7 @@ export default function Page() {
                     </div>
                     <p className="paper-abs">{p.abstract}</p>
                     <div className="paper-links">
-                      <a className="btn" href={p.pdf} target="_blank" rel="noreferrer">
+                      <a className="btn" href={asset(p.pdf)} target="_blank" rel="noreferrer">
                         PDF ↗
                       </a>
                     </div>
@@ -97,7 +97,7 @@ export default function Page() {
             </div>
             <div className="cv-actions" data-reveal>
               {cvPdf.available ? (
-                <a className="btn" href={cvPdf.href} download>
+                <a className="btn" href={asset(cvPdf.href)} download>
                   Download PDF ↗
                 </a>
               ) : (

@@ -136,3 +136,12 @@ export const links: { label: string; href: string }[] = [
 
 // Assembled at click-time so the address never sits in the static HTML.
 export const emailParts = ["acdragom", "gmail.com"];
+
+// Prefixes a public/ asset path (e.g. "/projects/x.pdf") with the deploy
+// basePath. Needed because Next.js does not apply basePath to raw <a href>
+// strings — only to <Link>/<Image>. Leaves absolute URLs (http...) untouched.
+export function asset(path: string): string {
+  if (/^https?:\/\//.test(path)) return path;
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  return `${base}${path}`;
+}
