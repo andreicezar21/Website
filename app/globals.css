@@ -478,93 +478,102 @@ h1.name {
   padding-left: 18px;
 }
 
-/* timeline rail — the dots echo the 16 nodes of the surface above */
-.cv-rail {
-  position: relative;
-  padding-left: 34px;
+/* LinkedIn-style cards: a bordered panel per section, logo-led entries */
+.cv-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  backdrop-filter: blur(7px);
+  overflow: hidden;
 }
 
-.cv-rail::before {
-  content: "";
-  position: absolute;
-  left: 9px;
-  top: 10px;
-  bottom: 10px;
-  width: 1px;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    var(--accent) 14%,
-    var(--accent-blue) 86%,
-    transparent
-  );
-  opacity: 0.55;
-}
-
-.cv-node {
-  position: relative;
+.cv-entry {
   display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  gap: 22px;
-  padding: 18px 0;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 18px;
+  padding: 22px clamp(18px, 3vw, 26px);
+  align-items: start;
 }
 
-.cv-node.has-photo {
-  grid-template-columns: 140px minmax(0, 1fr) auto;
+.cv-entry.has-photo {
+  grid-template-columns: 54px minmax(0, 1fr) auto;
 }
 
-.cv-node + .cv-node {
+.cv-entry + .cv-entry {
   border-top: 1px solid var(--line);
 }
 
-.cv-dot {
-  position: absolute;
-  left: -29px;
-  top: 25px;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 1.5px solid var(--accent);
-  box-shadow: 0 0 10px rgba(93, 255, 176, 0.65);
+.cv-logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+  background: #f3f5f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--line-strong);
 }
 
-.cv-node:nth-child(even) .cv-dot {
-  border-color: var(--accent-blue);
-  box-shadow: 0 0 10px rgba(78, 168, 255, 0.7);
+.cv-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 5px;
+}
+
+.cv-logo--mono {
+  background: var(--mono, #2a3340);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.cv-logo--empty {
+  background: rgba(255, 255, 255, 0.04);
+  border-style: dashed;
+}
+
+.cv-entry-main {
+  min-width: 0;
+  padding-top: 1px;
+}
+
+.cv-entry-main h4 {
+  font-family: var(--font-display);
+  color: var(--bright);
+  font-weight: 500;
+  font-size: 1.16rem;
+  letter-spacing: -0.005em;
+}
+
+.cv-org {
+  color: var(--violet-text);
+  font-size: 0.96rem;
+  margin-top: 2px;
 }
 
 .cv-period {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--accent-3);
-  letter-spacing: 0.08em;
-  padding-top: 7px;
-}
-
-.cv-node h4 {
-  font-family: var(--font-display);
-  color: var(--bright);
-  font-weight: 500;
-  font-size: 1.18rem;
-  letter-spacing: -0.005em;
-}
-
-.cv-org {
-  color: var(--violet-text);
-  font-size: 0.97rem;
-  margin-top: 2px;
+  letter-spacing: 0.06em;
+  margin-top: 5px;
 }
 
 .cv-detail {
-  margin-top: 8px;
+  margin-top: 9px;
   font-size: 0.95rem;
   color: #97a2ad;
   max-width: 60ch;
 }
 
 .cv-aside {
-  margin-top: 10px;
+  margin-top: 11px;
   font-size: 0.92rem;
   font-style: italic;
   color: #8a96a1;
@@ -845,9 +854,10 @@ h1.name {
   .course-list { grid-template-columns: 1fr; }
   .paper { grid-template-columns: 1fr; gap: 18px; }
   .paper-motif { width: 84px; height: 84px; }
-  .cv-node,
-  .cv-node.has-photo { grid-template-columns: 1fr; gap: 8px; }
-  .cv-dot { top: 22px; }
+  .cv-entry,
+  .cv-entry.has-photo { grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; }
+  .cv-entry .photo-frame { grid-column: 1 / -1; }
+  .cv-logo { width: 44px; height: 44px; }
   .photo-frame { width: 100%; max-width: 280px; margin: 14px 0 0; transform: rotate(0deg); }
   .hud-bl, .hud-br { display: none; }
   .sec-sub { display: none; }

@@ -85,6 +85,8 @@ export interface CvEntry {
   detail?: string;
   aside?: string; // a human margin-note; edit freely or delete
   photo?: Photo;
+  logo?: string; // path to an institution/company logo in public/logos/
+  monogram?: { text: string; color: string }; // fallback badge when no logo file
 }
 
 // First-person line that opens the CV — keeps it from reading like a template.
@@ -102,6 +104,7 @@ export const cv: {
       title: "Bachelor of Mathematics, Pure Mathematics",
       org: "University of Waterloo",
       period: "2025 – 2030",
+      logo: "/logos/waterloo.png",
       aside: "Working through the core — algebra, analysis, and the bridges between them.",
       photo: {
         src: "/photos/math145.jpg",
@@ -115,6 +118,7 @@ export const cv: {
       title: "Data Science Intern",
       org: "AMRIS Aviation",
       period: "May 2026 – Aug 2026",
+      logo: "/logos/amris.jpg",
     },
   ],
   awards: [
@@ -122,11 +126,13 @@ export const cv: {
       title: "President's Scholarship",
       org: "University of Waterloo",
       period: "2025",
+      logo: "/logos/waterloo.png",
     },
     {
       title: "Valedictorian",
       org: "Lisgar Collegiate Institute",
       period: "2025",
+      monogram: { text: "LCI", color: "#7a1f2b" },
       photo: {
         src: "/photos/valedictorian.jpg",
         caption:
@@ -141,6 +147,7 @@ export const cv: {
       title: "Mathematics & Science Tutor",
       org: "Lisgar Collegiate Institute",
       period: "2023 – 2025",
+      monogram: { text: "LCI", color: "#7a1f2b" },
       aside: "Where I learned that explaining a proof is the fastest way to find the hole in it.",
       photo: {
         src: "/photos/chalkboard.jpg",
@@ -176,6 +183,7 @@ export const courses: { label: string; note: string; items: Course[] }[] = [
       { code: "CS 136", title: "Imperative Programming" },
       { code: "ECON 101", title: "Microeconomics" },
       { code: "ECON 102", title: "Macroeconomics" },
+      { code: "COMMST 223", title: "Public Speaking" },
     ],
   },
   {

@@ -133,14 +133,28 @@ export default function Page() {
             {cvSections.map((s) => (
               <div className="cv-block" data-reveal key={s.label}>
                 <h3>{s.label}</h3>
-                <div className="cv-rail">
+                <div className="cv-card">
                   {s.entries.map((e, i) => (
-                    <div className={`cv-node${e.photo ? " has-photo" : ""}`} key={i}>
-                      <span className="cv-dot" aria-hidden="true" />
-                      <div className="cv-period">{e.period}</div>
-                      <div className="cv-body">
+                    <div className={`cv-entry${e.photo ? " has-photo" : ""}`} key={i}>
+                      {e.logo ? (
+                        <span className="cv-logo">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={asset(e.logo)} alt={`${e.org ?? e.title} logo`} />
+                        </span>
+                      ) : e.monogram ? (
+                        <span
+                          className="cv-logo cv-logo--mono"
+                          style={{ ["--mono" as string]: e.monogram.color }}
+                        >
+                          {e.monogram.text}
+                        </span>
+                      ) : (
+                        <span className="cv-logo cv-logo--empty" aria-hidden="true" />
+                      )}
+                      <div className="cv-entry-main">
                         <h4>{e.title}</h4>
                         {e.org && <div className="cv-org">{e.org}</div>}
+                        <div className="cv-period">{e.period}</div>
                         {e.detail && <div className="cv-detail">{e.detail}</div>}
                         {e.aside && <p className="cv-aside">{e.aside}</p>}
                       </div>
