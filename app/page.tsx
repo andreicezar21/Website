@@ -51,7 +51,9 @@ export default function Page() {
                 ))}
               </div>
               <div className="about-portrait" data-reveal>
-                <PhotoFrame photo={about.photo} wide />
+                {about.photos.map((p, i) => (
+                  <PhotoFrame key={i} photo={p} wide={p.src.includes("exam-hall")} />
+                ))}
               </div>
             </div>
             <div className="about-viz" data-reveal>

@@ -273,7 +273,24 @@ h1.name {
 
 .about-portrait {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 26px;
+}
+
+/* unify the pinned candids to one column width; portrait tall, landscape short */
+.about-portrait .photo-frame {
+  width: 264px;
+  margin: 0;
+}
+
+.about-portrait .photo-frame .photo-well img {
+  height: 318px;
+}
+
+.about-portrait .photo-frame--wide .photo-well img {
+  height: 178px;
 }
 
 /* two live algebraic-geometry canvases, side by side under the About text */

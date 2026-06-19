@@ -19,13 +19,21 @@ export const about = {
     "I'm a pure mathematics student at the University of Waterloo, working through the core of the subject — algebra, analysis, and the structures that connect them. Lately that has meant fields and Galois theory, group representations, and a growing collection of write-ups, some of which live in the Projects section below.",
     "The visuals on this site borrow their language from algebraic geometry: every figure rendered here is the zero locus of an explicit polynomial, deformed live as you scroll.",
   ],
-  // Candid for the About column — edit the caption/tag to taste.
-  photo: {
-    src: "/photos/exam-hall.jpg",
-    caption: "Exam season — a field house full of desks, one problem at a time",
-    tag: "find your seat number",
-    rotate: -1.4,
-  } as Photo,
+  // Candids for the About column — edit the captions/tags to taste.
+  photos: [
+    {
+      src: "/photos/qnc.jpg",
+      caption: "QNC at golden hour — the Quantum-Nano Centre, looking up.",
+      tag: "glass & lattice",
+      rotate: 1.6,
+    },
+    {
+      src: "/photos/exam-hall.jpg",
+      caption: "Exam season — a field house full of desks, one problem at a time.",
+      tag: "find your seat number",
+      rotate: -1.8,
+    },
+  ] as Photo[],
 };
 
 export interface Project {
@@ -103,6 +111,12 @@ export const cv: {
       org: "University of Waterloo",
       period: "2025 – 2030",
       aside: "Working through the core — algebra, analysis, and the bridges between them.",
+      photo: {
+        src: "/photos/math145.jpg",
+        caption: "Last lecture of MATH 145 — Galois theory on the board. One of the most fun courses I've taken.",
+        tag: "Aut(ℚ(∛2)/ℚ)",
+        rotate: -1.6,
+      },
     },
   ],
   work: [

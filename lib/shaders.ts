@@ -154,6 +154,10 @@ void main() {
     c += warm * glint * 0.9;
     // a thin warm rim only on the very edge, contrasting the green-blue fresnel
     c += warm * pow(fre, 5.0) * 0.22;
+    // blue highlight: a broad soft sheen on the lit faces + a bright blue rim
+    float blueSheen = pow(clamp(dot(n, hv), 0.0, 1.0), 22.0);
+    c += blue * blueSheen * 0.55;
+    c += blue * pow(fre, 2.2) * 0.40;
     c += violet * nodeF * pulse * 1.15;
 
     float band = exp(-pow((q.z - uScanZ) * 16.0, 2.0));
