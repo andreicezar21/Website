@@ -22,7 +22,7 @@ export const about = {
   // Candid for the About column — edit the caption/tag to taste.
   photo: {
     src: "/photos/exam-hall.jpg",
-    caption: "Exam season — a field house full of desks, one problem at a time.",
+    caption: "My last exam of first year as a mathematician — the linear algebra final, which had a Putnam problem on it.",
     tag: "find your seat number",
     rotate: -1.8,
   } as Photo,
@@ -105,6 +105,7 @@ export const cv: {
       org: "University of Waterloo",
       period: "2025 – 2030",
       logo: "/logos/waterloo.png",
+      detail: "GPA: 90.0 / 100.0",
       aside: "Working through the core — algebra, analysis, and the bridges between them.",
       photo: {
         src: "/photos/math145.jpg",
@@ -132,7 +133,7 @@ export const cv: {
       title: "Valedictorian",
       org: "Lisgar Collegiate Institute",
       period: "2025",
-      monogram: { text: "LCI", color: "#7a1f2b" },
+      logo: "/logos/lisgar.jpg",
       photo: {
         src: "/photos/valedictorian.jpg",
         caption:
@@ -147,7 +148,7 @@ export const cv: {
       title: "Mathematics & Science Tutor",
       org: "Lisgar Collegiate Institute",
       period: "2023 – 2025",
-      monogram: { text: "LCI", color: "#7a1f2b" },
+      logo: "/logos/lisgar.jpg",
       aside: "Where I learned that explaining a proof is the fastest way to find the hole in it.",
       photo: {
         src: "/photos/chalkboard.jpg",
